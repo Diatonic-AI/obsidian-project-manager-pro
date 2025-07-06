@@ -1,10 +1,14 @@
 {
-	"id": "obsidian-project-manager",
-	"name": "Obsidian Project Manager",
+	"id": "obsidian-project-manager-pro",
+	"name": "Obsidian Project Manager Pro",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
 	"description": "Comprehensive project management with planning, tracking, Gantt charts, Kanban boards, dependencies, and automation",
-	"author": "Steve Heaney Investments",
-	"authorUrl": "https://steve-heaney-investments.com",
+	"author": "Diatonic AI",
+	"authorUrl": "https://github.com/Diatonic-AI",
+	"fundingUrl": {
+		"GitHub Sponsor": "https://github.com/sponsors/Diatonic-AI",
+		"Support Development": "https://diatonic.online/support"
+	},
 	"isDesktopOnly": false
 }

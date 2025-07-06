@@ -1,15 +1,19 @@
 {
-	"name": "obsidian-project-manager",
+	"name": "obsidian-project-manager-pro",
 	"version": "1.0.0",
 	"description": "Ultimate project management suite with comprehensive planning, tracking, and collaboration features for Obsidian",
 	"main": "main.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Diatonic-AI/obsidian-project-manager-pro.git"
+	},
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": ["obsidian", "project-management", "productivity", "planning", "tasks"],
+	"author": "Diatonic AI <admin@diatonic.online>",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^16.11.6",

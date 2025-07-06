@@ -1,73 +1,146 @@
-# Obsidian Sample Plugin
+# Obsidian Project Manager Pro
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/release/Diatonic-AI/obsidian-project-manager-pro.svg)](https://github.com/Diatonic-AI/obsidian-project-manager-pro/releases)
+[![GitHub stars](https://img.shields.io/github/stars/Diatonic-AI/obsidian-project-manager-pro.svg)](https://github.com/Diatonic-AI/obsidian-project-manager-pro/stargazers)
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+A comprehensive project management solution for Obsidian that transforms your note-taking experience into a powerful project management platform.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+## 🚀 Features
 
-## First time developing plugins?
+### Core Project Management
 
-Quick starting guide for new plugin devs:
+- **Project Creation & Templates**: Create projects from customizable templates
+- **Task Management**: Full lifecycle task management with priorities, due dates, and dependencies
+- **Meeting Notes**: Structured meeting note creation with agenda and action items
+- **Daily Planner**: Automated daily planning with task integration
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+### Advanced Views
 
-## Releasing new releases
+- **Kanban Board**: Visual task management with drag-and-drop functionality
+- **Gantt Chart**: Timeline view for project planning and tracking
+- **Dashboard**: Comprehensive project overview with metrics and insights
+- **Project Manager View**: Centralized project management interface
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+### Automation & Intelligence
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+- **Automation Engine**: Rule-based automation for task creation and updates
+- **Template System**: Dynamic template generation with variables
+- **Smart Notifications**: Context-aware notifications and reminders
+- **File Integration**: Seamless integration with Obsidian's file system
 
-## Adding your plugin to the community plugin list
+## 📦 Installation
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+### Manual Installation
 
-## How to use
+1. Download the latest release from the [releases page](https://github.com/Diatonic-AI/obsidian-project-manager-pro/releases)
+2. Extract the files to your Obsidian plugins folder: `VaultFolder/.obsidian/plugins/project-manager-pro/`
+3. Reload Obsidian and enable the plugin in Settings → Community Plugins
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+### From Source
 
-## Manually installing the plugin
+```bash
+git clone https://github.com/Diatonic-AI/obsidian-project-manager-pro.git
+cd obsidian-project-manager-pro
+npm install
+npm run build
+```
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+## 🎯 Quick Start
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+1. **Setup**: Configure your project folders in Settings → Project Manager
+2. **Create Project**: Use `Ctrl+P` → "Create New Project" or click the ribbon icon
+3. **Add Tasks**: Create tasks within projects with priorities and due dates
+4. **View Dashboard**: Access the dashboard for project overview and metrics
+5. **Use Views**: Switch between Kanban, Gantt, and other views as needed
 
-## Funding URL
+## ⚙️ Configuration
 
-You can include funding URLs where people who use your plugin can financially support it.
+### Basic Settings
+
+- **Projects Folder**: Where your projects will be stored (default: `Projects`)
+- **Templates Folder**: Location of project templates (default: `Templates/Projects`)
+- **Daily Notes Folder**: Where daily planners are created (default: `Daily Notes`)
+
+### Advanced Features
+
+- **Automation**: Enable rule-based automation for enhanced workflow
+- **Notifications**: Configure notification preferences
+- **Date Format**: Customize date formats throughout the application
+
+## 🏗️ Architecture
+
+The plugin is built with a modular architecture:
+
+```
+src/
+├── core/              # Core business logic
+│   ├── AutomationEngine.ts
+│   ├── ProjectManager.ts
+│   ├── TaskManager.ts
+│   └── TemplateManager.ts
+├── modals/            # User interface modals
+├── views/             # Custom Obsidian views
+├── utils/             # Utility functions and error handling
+└── types.ts           # TypeScript type definitions
+```
+
+## 🛠️ Development
+
+### For Plugin Developers
+
+- **Requirements**: Node.js v16+ and npm
+- **Dependencies**: Latest Obsidian API with TypeScript definitions
+- **Build System**: ESBuild for fast compilation and hot reloading
+
+### Development Workflow
+
+1. **Setup Environment**:
+
+   ```bash
+   git clone https://github.com/Diatonic-AI/obsidian-project-manager-pro.git
+   cd obsidian-project-manager-pro
+   npm install
+   ```
+
+2. **Development Build**:
+
+   ```bash
+   npm run dev  # Starts watch mode with hot reloading
+   ```
+
+3. **Production Build**:
+
+   ```bash
+   npm run build  # Creates optimized production build
+   ```
+
+4. **Testing**:
+   - Enable the plugin in Obsidian settings
+   - Test features in your development vault
+   - Use TypeScript strict mode for type safety
+
+### Release Process
+
+1. Update version in `manifest.json` and `package.json`
+2. Update `versions.json` with compatibility information
+3. Create GitHub release with version tag (e.g., `v1.0.1`)
+4. Upload `manifest.json`, `main.js`, and `styles.css` as release assets
+
+## 📦 Manual Installation
+
+1. Download the latest release files:
+   - `main.js`
+   - `styles.css`
+   - `manifest.json`
+
+2. Copy files to your vault's plugin directory:
+
+   ```
+   VaultFolder/.obsidian/plugins/obsidian-project-manager/
+   ```
+
+3. Enable the plugin in Obsidian settings
 
 The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
 
@@ -91,4 +164,44 @@ If you have multiple URLs, you can also do:
 
 ## API Documentation
 
-See https://github.com/obsidianmd/obsidian-api
+See <https://github.com/obsidianmd/obsidian-api>
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Setup
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development: `npm run dev`
+4. Build for production: `npm run build`
+
+### Code Quality
+
+- TypeScript with strict type checking
+- ESLint for code quality
+- Automated testing with Jest
+- GPG-signed commits required
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔒 Security
+
+This repository uses GPG-signed commits and tags for security verification. All releases are cryptographically signed.
+
+## 🆘 Support
+
+- **Issues**: [GitHub Issues](https://github.com/Diatonic-AI/obsidian-project-manager-pro/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Diatonic-AI/obsidian-project-manager-pro/discussions)
+- **Email**: <admin@diatonic.online>
+
+## 🏢 About Diatonic AI
+
+This plugin is developed and maintained by [Diatonic AI](https://github.com/Diatonic-AI), focused on creating intelligent productivity tools.
+
+---
+
+**Made with ❤️ by the Diatonic AI Team**
