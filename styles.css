@@ -1,8 +1,790 @@
-/*
+/* Project Manager Pro - Comprehensive Styling */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+/* === GLOBAL VARIABLES === */
+:root {
+  --pm-primary: #6366f1;
+  --pm-primary-hover: #4f46e5;
+  --pm-secondary: #64748b;
+  --pm-success: #10b981;
+  --pm-warning: #f59e0b;
+  --pm-danger: #ef4444;
+  --pm-info: #06b6d4;
+  
+  --pm-bg-primary: var(--background-primary);
+  --pm-bg-secondary: var(--background-secondary);
+  --pm-bg-modifier: var(--background-modifier-border);
+  
+  --pm-text-normal: var(--text-normal);
+  --pm-text-muted: var(--text-muted);
+  --pm-text-accent: var(--text-accent);
+  
+  --pm-border-radius: 8px;
+  --pm-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --pm-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --pm-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  --pm-transition: all 0.2s ease-in-out;
+}
 
-If your plugin does not need CSS, delete this file.
+/* === DASHBOARD STYLES === */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-*/
+.dashboard-widget {
+  background: var(--pm-bg-secondary);
+  border: 1px solid var(--pm-bg-modifier);
+  border-radius: var(--pm-border-radius);
+  padding: 20px;
+  box-shadow: var(--pm-shadow-sm);
+  transition: var(--pm-transition);
+}
+
+.dashboard-widget:hover {
+  box-shadow: var(--pm-shadow-md);
+  transform: translateY(-2px);
+}
+
+.dashboard-widget h3 {
+  margin: 0 0 16px 0;
+  color: var(--pm-text-accent);
+  font-size: 1.2em;
+  font-weight: 600;
+  border-bottom: 2px solid var(--pm-primary);
+  padding-bottom: 8px;
+}
+
+/* === PROJECT STATS === */
+.project-stats, .task-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.project-stats > div, .task-stats > div {
+  background: var(--pm-bg-primary);
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid var(--pm-bg-modifier);
+  font-weight: 500;
+}
+
+.task-stats .overdue {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--pm-danger);
+  border-color: var(--pm-danger);
+}
+
+/* === PROJECT LIST AND CARDS === */
+.project-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--pm-bg-secondary);
+  border-radius: var(--pm-border-radius);
+  border: 1px solid var(--pm-bg-modifier);
+}
+
+.project-toolbar button {
+  background: var(--pm-primary);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--pm-transition);
+}
+
+.project-toolbar button:hover {
+  background: var(--pm-primary-hover);
+  transform: translateY(-1px);
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 0 16px;
+}
+
+.project-card {
+  background: var(--pm-bg-secondary);
+  border: 1px solid var(--pm-bg-modifier);
+  border-radius: var(--pm-border-radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: var(--pm-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  box-shadow: var(--pm-shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--pm-primary);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--pm-primary);
+  transform: scaleY(0);
+  transition: var(--pm-transition);
+}
+
+.project-card:hover::before {
+  transform: scaleY(1);
+}
+
+.project-header h3 {
+  margin: 0 0 12px 0;
+  color: var(--pm-text-accent);
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-meta span {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+/* Status badges */
+.status-planning {
+  background: rgba(251, 191, 36, 0.2);
+  color: #d97706;
+}
+
+.status-active, .status-in-progress {
+  background: rgba(16, 185, 129, 0.2);
+  color: #059669;
+}
+
+.status-completed, .status-done {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+.status-on-hold {
+  background: rgba(168, 85, 247, 0.2);
+  color: #7c3aed;
+}
+
+.status-cancelled {
+  background: rgba(239, 68, 68, 0.2);
+  color: #dc2626;
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--pm-bg-modifier);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pm-primary), var(--pm-success));
+  transition: width 0.3s ease;
+}
+
+/* === ACTIVITY LIST === */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--pm-bg-primary);
+  border-radius: 6px;
+  border: 1px solid var(--pm-bg-modifier);
+  cursor: pointer;
+  transition: var(--pm-transition);
+}
+
+.activity-item:hover {
+  background: var(--pm-bg-modifier);
+  transform: translateX(4px);
+}
+
+.time-ago {
+  color: var(--pm-text-muted);
+  font-size: 0.85em;
+}
+
+/* === DEADLINES LIST === */
+.deadlines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deadline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--pm-bg-primary);
+  border-radius: 6px;
+  border-left: 4px solid var(--pm-warning);
+  cursor: pointer;
+  transition: var(--pm-transition);
+}
+
+.deadline-item:hover {
+  background: var(--pm-bg-modifier);
+  transform: translateX(4px);
+}
+
+.deadline-item.urgent {
+  border-left-color: var(--pm-danger);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.deadline-date {
+  color: var(--pm-text-muted);
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+/* === KANBAN STYLES === */
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  overflow-x: auto;
+  min-height: 70vh;
+}
+
+.kanban-column {
+  flex: 0 0 300px;
+  background: var(--pm-bg-secondary);
+  border-radius: var(--pm-border-radius);
+  border: 1px solid var(--pm-bg-modifier);
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.kanban-column-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--pm-bg-modifier);
+  background: var(--pm-bg-primary);
+  border-radius: var(--pm-border-radius) var(--pm-border-radius) 0 0;
+}
+
+.kanban-column-title {
+  font-weight: 600;
+  color: var(--pm-text-accent);
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kanban-column-count {
+  background: var(--pm-primary);
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+}
+
+.kanban-column-body {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kanban-task {
+  background: var(--pm-bg-primary);
+  border: 1px solid var(--pm-bg-modifier);
+  border-radius: 6px;
+  padding: 12px;
+  cursor: grab;
+  transition: var(--pm-transition);
+  position: relative;
+}
+
+.kanban-task:hover {
+  box-shadow: var(--pm-shadow-md);
+  transform: translateY(-2px);
+}
+
+.kanban-task.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.kanban-task-title {
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--pm-text-normal);
+}
+
+.kanban-task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.kanban-task-priority {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+.priority-high {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--pm-danger);
+}
+
+.priority-medium {
+  background: rgba(251, 191, 36, 0.2);
+  color: #d97706;
+}
+
+.priority-low {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+.priority-critical {
+  background: rgba(147, 51, 234, 0.2);
+  color: #7c3aed;
+}
+
+/* === GANTT STYLES === */
+.gantt-container {
+  background: var(--pm-bg-secondary);
+  border-radius: var(--pm-border-radius);
+  border: 1px solid var(--pm-bg-modifier);
+  overflow: hidden;
+  margin: 20px;
+}
+
+.gantt-header {
+  background: var(--pm-bg-primary);
+  padding: 16px;
+  border-bottom: 1px solid var(--pm-bg-modifier);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gantt-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.gantt-controls button {
+  background: var(--pm-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: var(--pm-transition);
+}
+
+.gantt-controls button:hover {
+  background: var(--pm-primary-hover);
+}
+
+.gantt-timeline {
+  display: flex;
+  min-height: 400px;
+}
+
+.gantt-tasks {
+  flex: 0 0 250px;
+  background: var(--pm-bg-primary);
+  border-right: 1px solid var(--pm-bg-modifier);
+  overflow-y: auto;
+}
+
+.gantt-chart {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.gantt-task-row {
+  height: 40px;
+  border-bottom: 1px solid var(--pm-bg-modifier);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.gantt-task-row:hover {
+  background: var(--pm-bg-modifier);
+}
+
+.gantt-task-name {
+  font-weight: 500;
+  color: var(--pm-text-normal);
+}
+
+.gantt-timeline-header {
+  height: 60px;
+  background: var(--pm-bg-primary);
+  border-bottom: 1px solid var(--pm-bg-modifier);
+  display: flex;
+  align-items: center;
+}
+
+.gantt-date-column {
+  min-width: 80px;
+  padding: 8px;
+  border-right: 1px solid var(--pm-bg-modifier);
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--pm-text-muted);
+}
+
+.gantt-bar {
+  height: 20px;
+  background: linear-gradient(90deg, var(--pm-primary), var(--pm-primary-hover));
+  border-radius: 4px;
+  position: relative;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: var(--pm-transition);
+}
+
+.gantt-bar:hover {
+  transform: scaleY(1.2);
+  box-shadow: var(--pm-shadow-md);
+}
+
+.gantt-bar-progress {
+  height: 100%;
+  background: var(--pm-success);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* === CALENDAR STYLES === */
+.calendar-container {
+  background: var(--pm-bg-secondary);
+  border-radius: var(--pm-border-radius);
+  border: 1px solid var(--pm-bg-modifier);
+  margin: 20px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  background: var(--pm-bg-primary);
+  padding: 16px;
+  border-bottom: 1px solid var(--pm-bg-modifier);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--pm-text-accent);
+  margin: 0;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.calendar-nav button {
+  background: var(--pm-primary);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--pm-transition);
+}
+
+.calendar-nav button:hover {
+  background: var(--pm-primary-hover);
+}
+
+.calendar-nav button.active {
+  background: var(--pm-success);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--pm-bg-modifier);
+}
+
+.calendar-day-header {
+  background: var(--pm-bg-primary);
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--pm-text-accent);
+}
+
+.calendar-day {
+  background: var(--pm-bg-secondary);
+  min-height: 120px;
+  padding: 8px;
+  border: 1px solid transparent;
+  transition: var(--pm-transition);
+}
+
+.calendar-day:hover {
+  background: var(--pm-bg-modifier);
+  border-color: var(--pm-primary);
+}
+
+.calendar-day.today {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--pm-primary);
+}
+
+.calendar-day.other-month {
+  opacity: 0.3;
+}
+
+.calendar-day-number {
+  font-weight: 600;
+  color: var(--pm-text-normal);
+  margin-bottom: 4px;
+}
+
+.calendar-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calendar-event {
+  background: var(--pm-primary);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  cursor: pointer;
+  transition: var(--pm-transition);
+}
+
+.calendar-event:hover {
+  background: var(--pm-primary-hover);
+  transform: scale(1.02);
+}
+
+.calendar-event.task {
+  background: var(--pm-info);
+}
+
+.calendar-event.deadline {
+  background: var(--pm-danger);
+}
+
+.calendar-event.milestone {
+  background: var(--pm-success);
+}
+
+/* === FORM STYLES === */
+.pm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pm-form-label {
+  font-weight: 500;
+  color: var(--pm-text-normal);
+}
+
+.pm-form-input, .pm-form-textarea, .pm-form-select {
+  padding: 10px 12px;
+  border: 1px solid var(--pm-bg-modifier);
+  border-radius: 6px;
+  background: var(--pm-bg-primary);
+  color: var(--pm-text-normal);
+  transition: var(--pm-transition);
+}
+
+.pm-form-input:focus, .pm-form-textarea:focus, .pm-form-select:focus {
+  outline: none;
+  border-color: var(--pm-primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.pm-form-error {
+  color: var(--pm-danger);
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+
+/* === MODAL STYLES === */
+.pm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.pm-modal {
+  background: var(--pm-bg-secondary);
+  border-radius: var(--pm-border-radius);
+  border: 1px solid var(--pm-bg-modifier);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: var(--pm-shadow-lg);
+}
+
+/* === LOADING STATES === */
+.pm-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: var(--pm-text-muted);
+}
+
+.pm-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--pm-bg-modifier);
+  border-top: 2px solid var(--pm-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === ERROR STATES === */
+.pm-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--pm-danger);
+  border-radius: 6px;
+  padding: 12px;
+  color: var(--pm-danger);
+  margin: 16px 0;
+}
+
+.pm-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--pm-success);
+  border-radius: 6px;
+  padding: 12px;
+  color: var(--pm-success);
+  margin: 16px 0;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .kanban-board {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .kanban-column {
+    flex: none;
+    max-height: 300px;
+  }
+  
+  .gantt-timeline {
+    flex-direction: column;
+  }
+  
+  .gantt-tasks {
+    flex: none;
+    max-height: 200px;
+  }
+}
+
+/* === DARK MODE ADJUSTMENTS === */
+.theme-dark {
+  --pm-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --pm-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --pm-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* === ANIMATIONS === */
+.pm-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pm-slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}

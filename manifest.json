@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-project-manager",
+	"name": "Obsidian Project Manager",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Comprehensive project management with planning, tracking, Gantt charts, Kanban boards, dependencies, and automation",
+	"author": "Steve Heaney Investments",
+	"authorUrl": "https://steve-heaney-investments.com",
 	"isDesktopOnly": false
 }
